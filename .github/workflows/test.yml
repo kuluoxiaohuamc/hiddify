@@ -1,0 +1,11 @@
+name: Check JSON
+on: [push] # 只要你改了代码提交，它就跑
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON
+        run: |
+          # 这里可以用简单的命令检查你的语言文件格式
+          find . -name "*.json" -type f -exec python3 -m json.tool {} + > /dev/null
